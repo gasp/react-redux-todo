@@ -1,23 +1,33 @@
+
+const todo = (state = {}, action) => {
+  switch (action.type) {
+    case 'TODO_ADD':
+      return {
+        id: action.id,
+        text: action.text,
+        completed: false
+      }
+    case 'TODO_TOGGLE':
+      if (state.id !== action.id) {
+        return state;
+      }
+      return {
+        ...state,
+        completed: !todo.completed
+      };
+    default:
+      return state;
+  }
+};
+
+
 const todos = (state = [], action) => {
   console.log(state, action);
   switch (action.type) {
     case 'TODO_ADD':
-      return [...state, {
-        id: action.id,
-        text: action.text,
-        completed: false
-      }];
+      return [...state, todo(undefined, action)];
     case 'TODO_TOGGLE':
-      return state.map(todo => {
-        if (todo.id !== action.id) {
-          return todo;
-        }
-
-        return {
-          ...todo,
-          completed: !todo.completed
-        };
-      });
+      return state.map(t => todo(t, action));
     default:
       return state;
   }
