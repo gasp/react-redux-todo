@@ -68,7 +68,7 @@ window.store = store;
 const render = () => {
   console.log('render');
   ReactDOM.render(
-    <TodoApp todos={store.getState().todos} filter={store.getState().filter}/>,
+    <TodoApp {...store.getState()}/>,
     document.getElementById('root')
   );
 }
