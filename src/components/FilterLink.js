@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import store from './store';
+import store from '../store';
 
 const FilterLink = ({currentFilter, filter, children}) => {
   if (currentFilter === filter) {
