@@ -18,7 +18,6 @@ it('renders multiple todos', () => {
 
   const div = document.createElement('div');
   ReactDOM.render(<TodoApp {...fakestate}/>, div);
-  console.log(div);
   expect(
     div.querySelectorAll('li').length
   ).toEqual(3);

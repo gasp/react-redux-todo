@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import store from '../store';
+import React from 'react';
 
-const FilterLink = ({currentFilter, filter, children}) => {
+const FilterLink = ({currentFilter, filter, children, onClick}) => {
   if (currentFilter === filter) {
     return <span>{children}</span>;
   }
@@ -9,7 +8,7 @@ const FilterLink = ({currentFilter, filter, children}) => {
   return (
     <a href='#' onClick={ ev => {
       ev.preventDefault();
-      store.dispatch({type: 'SET_VISIBILITY_FILTER', filter});
+      onClick(filter);
     }}>{children}</a>
   );
 };
