@@ -22,7 +22,9 @@ const getVisibleTodos = (todos, filter) => {
 let nextTodoId = 0;
 class TodoApp extends React.Component {
   render() {
-    const visibleTodos = getVisibleTodos(this.props.todos, this.props.filter);
+    const { todos, filter } = this.props;
+
+    const visibleTodos = getVisibleTodos(todos, filter);
     return (
       <div>
         <input ref={node => {
@@ -53,10 +55,9 @@ class TodoApp extends React.Component {
         </ul>
         <p>
           Show: {' '}
-          <FilterLink filter='SHOW_ALL'>All</FilterLink> | {' '}
-          <FilterLink filter='SHOW_ACTIVE'>Active</FilterLink> | {' '}
-          <FilterLink filter='SHOW_COMPLETED'>Completed</FilterLink>
-          . currently: {this.props.filter}
+          <FilterLink filter='SHOW_ALL' currentFilter={filter}>All</FilterLink> | {' '}
+          <FilterLink filter='SHOW_ACTIVE' currentFilter={filter}>Active</FilterLink> | {' '}
+          <FilterLink filter='SHOW_COMPLETED' currentFilter={filter}>Completed</FilterLink>
         </p>
       </div>
     )

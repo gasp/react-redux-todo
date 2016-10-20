@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import store from './store';
 
-const FilterLink = ({filter, children}) => {
+const FilterLink = ({currentFilter, filter, children}) => {
+  if (currentFilter === filter) {
+    return <span>{children}</span>;
+  }
+
   return (
     <a href='#' onClick={ ev => {
       ev.preventDefault();
