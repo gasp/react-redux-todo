@@ -5,28 +5,32 @@ import './index.css';
 
 import store from './store';
 
-
-const Counter = ({ value, onIncrement, onDecrement }) => (
-  <div>
-    <h1>{value}</h1>
-    <button onClick={onIncrement}>+</button>
-    <button onClick={onDecrement}>-</button>
-  </div>
-);
+let nextTodoId = 0;
+class TodoApp extends React.Component {
+  render() {
+    return (
+      <div>
+        <button onClick={() => {
+          store.dispatch({ type: 'TODO_ADD', text: 'Test', id: nextTodoId++});
+        }}>add Todo</button>
+        <ul>
+          {this.props.todos.map(todo =>
+            <li key={todo.id}>
+              {todo.text}
+            </li>
+          )}
+        </ul>
+      </div>
+    )
+  }
+}
 
 window.store = store;
 
 const render = () => {
   console.log('render');
   ReactDOM.render(
-    <Counter value={store.getState()}
-      onIncrement={() => store.dispatch({
-        type: 'INCREMENT'
-      })}
-      onDecrement={() => store.dispatch(
-        {type: 'DECREMENT'})
-      }
-      />,
+    <TodoApp todos={store.getState().todos}/>,
     document.getElementById('root')
   );
 }
