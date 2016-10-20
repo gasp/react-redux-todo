@@ -22,7 +22,7 @@ const getVisibleTodos = (todos, filter) => {
 let nextTodoId = 0;
 class TodoApp extends React.Component {
   render() {
-    const visibleTodos = getVisibleTodos(this.props.todos, this.props.visibilityFilter);
+    const visibleTodos = getVisibleTodos(this.props.todos, this.props.filter);
     return (
       <div>
         <input ref={node => {
@@ -56,7 +56,7 @@ class TodoApp extends React.Component {
           <FilterLink filter='SHOW_ALL'>All</FilterLink> | {' '}
           <FilterLink filter='SHOW_ACTIVE'>Active</FilterLink> | {' '}
           <FilterLink filter='SHOW_COMPLETED'>Completed</FilterLink>
-          . currently: {this.props.visibilityFilter}
+          . currently: {this.props.filter}
         </p>
       </div>
     )
@@ -68,7 +68,7 @@ window.store = store;
 const render = () => {
   console.log('render');
   ReactDOM.render(
-    <TodoApp todos={store.getState().todos} visibilityFilter={store.getState().visibilityFilter}/>,
+    <TodoApp todos={store.getState().todos} filter={store.getState().filter}/>,
     document.getElementById('root')
   );
 }

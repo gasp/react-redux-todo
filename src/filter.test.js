@@ -1,4 +1,4 @@
-import todos from './visibilityFilter';
+import filter from './filter';
 
 it('tests VISIBILITY_FILTER default filter', () => {
   const stateBefore = {};
@@ -8,7 +8,7 @@ it('tests VISIBILITY_FILTER default filter', () => {
   };
   const stateAfter = 'SHOW_ALL';
   expect(
-    todos(stateBefore, action)
+    filter(stateBefore, action)
   ).toEqual(stateAfter);
 
 });
@@ -21,6 +21,6 @@ it('tests setting a filter', () => {
   };
   const stateAfter = 'BB';
   expect(
-    todos(stateBefore, action)
+    filter(stateBefore, action)
   ).toEqual(stateAfter);
 });

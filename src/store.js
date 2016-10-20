@@ -1,11 +1,8 @@
 import { createStore, combineReducers } from 'redux';
 import todos from './todos.js';
-import visibilityFilter from './visibilityFilter.js';
+import filter from './filter.js';
 
-const todoApp = combineReducers({
-  todos,
-  visibilityFilter
-});
+const todoApp = combineReducers({ todos, filter });
 
 const store = createStore(todoApp);
 
