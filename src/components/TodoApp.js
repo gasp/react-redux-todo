@@ -1,5 +1,6 @@
 import React from 'react';
 import FilterLink from './FilterLink';
+import TodoList from './TodoList';
 
 import store from '../store';
 
@@ -35,21 +36,8 @@ class TodoApp extends React.Component {
           });
           this.input.value = '';
         }}>add Todo</button>
-        <ul>
-          {visibleTodos.map(todo =>
-            <li key={todo.id} onClick={() => {
-                store.dispatch({
-                  type: 'TODO_TOGGLE',
-                  id: todo.id
-                })
-              }}
-              style={{
-                textDecoration: todo.completed ? 'line-through': 'none'
-              }}>
-              {todo.text}
-            </li>
-          )}
-        </ul>
+        <TodoList todos={visibleTodos}
+          onTodoClick={(clickedId) => { store.dispatch({ type: 'TODO_TOGGLE', id: clickedId }) }} />
         <p>
           Show: {' '}
           <FilterLink filter='SHOW_ALL' currentFilter={filter}>All</FilterLink> | {' '}
@@ -60,6 +48,5 @@ class TodoApp extends React.Component {
     )
   }
 }
-
 
 export default TodoApp;

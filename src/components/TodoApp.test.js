@@ -9,7 +9,7 @@ it('renders without crashing', () => {
 });
 
 
-it('renders one todo', () => {
+it('renders multiple todos', () => {
   const fakestate = {todos:[
     {id:0xfd, text:'sample one', completed: false},
     {id:0xfe, text:'sample two', completed: true},
