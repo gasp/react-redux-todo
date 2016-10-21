@@ -18,4 +18,7 @@ const presets =  { todos: [
 ], filter:'' };
 const store = createStore(rootReducer, presets);
 
+// FIXME: remove this hack
+window.store = store;
+
 export default store;

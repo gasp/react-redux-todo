@@ -1,8 +1,9 @@
 import React from 'react';
-import store from '../store';
+// import store from '../store';
 
 let nextTodoId = 0;
-const TodoAdd = () => {
+const TodoAdd = (props, { store }) => {
+  console.log('TodoAdd', props, store);
   let input;
   return (
     <div>
@@ -21,6 +22,10 @@ const TodoAdd = () => {
       </button>
     </div>
   );
+};
+
+TodoAdd.contextTypes = {
+  store: React.PropTypes.object
 };
 
 export default TodoAdd;
