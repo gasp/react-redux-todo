@@ -15,9 +15,9 @@ class FilterLink extends Component {
 
     return (
       <Link active={props.filter === state.filter}
-        onClick= {() => store.dispatch({
+        onClick={() => store.dispatch({
           type: 'SET_VISIBILITY_FILTER',
-          filter: prop.filter
+          filter: props.filter
         })}>
         {props.children}
       </Link>
