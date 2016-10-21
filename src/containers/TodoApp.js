@@ -1,7 +1,7 @@
 import React from 'react';
-import TodoList from './TodoList';
-import TodoAdd from './TodoAdd';
-import Footer from './Footer';
+import TodoList from '../components/TodoList';
+import TodoAdd from '../components/TodoAdd';
+import Footer from '../components/Footer';
 
 import store from '../store';
 

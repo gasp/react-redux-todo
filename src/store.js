@@ -1,6 +1,6 @@
 import { createStore, combineReducers } from 'redux';
-import todos from './todos.js';
-import filter from './filter.js';
+import todos from './reducers/todos.js';
+import filter from './reducers/filter.js';
 
 const todoApp = combineReducers({ todos, filter });
 const rootReducer = (state, action) => {
