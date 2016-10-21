@@ -22,7 +22,6 @@ const todo = (state = {}, action) => {
 
 
 const todos = (state = [], action) => {
-  console.log(state, action);
   switch (action.type) {
     case 'TODO_ADD':
       return [...state, todo(undefined, action)];

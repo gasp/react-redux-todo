@@ -34,7 +34,7 @@ const TodoApp = ({ todos, filter }) => (
         store.dispatch({
           type: 'SET_VISIBILITY_FILTER',
           filter
-        })
+        });
       }} />
   </div>
 );
