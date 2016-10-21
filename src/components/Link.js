@@ -1,16 +1,16 @@
 import React from 'react';
 
-const FilterLink = ({currentFilter, filter, children, onClick}) => {
-  if (currentFilter === filter) {
+const Link = ({active, children, onClick}) => {
+  if (active) {
     return <span>{children}</span>;
   }
 
   return (
     <a href='#' onClick={ ev => {
       ev.preventDefault();
-      onClick(filter);
+      onClick();
     }}>{children}</a>
   );
 };
 
-export default FilterLink;
+export default Link;

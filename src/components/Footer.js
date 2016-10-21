@@ -1,12 +1,12 @@
 import React from 'react';
-import FilterLink from './FilterLink';
+import FilterLink from '../containers/FilterLink';
 
-const Footer = ({ filter, onFilterClick }) => (
+const Footer = () => (
   <p>
     Show: {' '}
-    <FilterLink filter='SHOW_ALL' onClick={onFilterClick} currentFilter={filter}>All</FilterLink> | {' '}
-    <FilterLink filter='SHOW_ACTIVE' onClick={onFilterClick} currentFilter={filter}>Active</FilterLink> | {' '}
-    <FilterLink filter='SHOW_COMPLETED' onClick={onFilterClick} currentFilter={filter}>Completed</FilterLink>
+    <FilterLink filter='SHOW_ALL'>All</FilterLink> | {' '}
+    <FilterLink filter='SHOW_ACTIVE'>Active</FilterLink> | {' '}
+    <FilterLink filter='SHOW_COMPLETED'>Completed</FilterLink>
   </p>
 );
 
