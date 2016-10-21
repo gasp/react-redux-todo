@@ -1,6 +1,8 @@
 import React from 'react';
+import store from '../store';
 
-const TodoAdd = ({ onAddClick }) => {
+let nextTodoId = 0;
+const TodoAdd = () => {
   let input;
   return (
     <div>
@@ -8,7 +10,11 @@ const TodoAdd = ({ onAddClick }) => {
         input = node;
       }} />
       <button onClick={() => {
-        onAddClick(input.value)
+        store.dispatch({
+          type: 'TODO_ADD',
+          text: input.value,
+          id: nextTodoId ++
+        });
         input.value = '';
       }}>
         Add todo
