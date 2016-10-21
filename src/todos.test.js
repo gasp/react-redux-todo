@@ -53,3 +53,27 @@ it('tests TODO_TOGGLE', () => {
     todos(stateBefore, action)
   ).toEqual(stateAfter);
 });
+
+it('tests TODO_TOGGLE BACK', () => {
+  const stateBefore = [
+    {
+      id: 0,
+      text: 'Be true',
+      completed: true
+    }
+  ];
+  const action = {
+    type: 'TODO_TOGGLE',
+    id: 0
+  };
+  const stateAfter = [
+    {
+      id: 0,
+      text: 'Be true',
+      completed: false
+    }
+  ];
+  expect(
+    todos(stateBefore, action)
+  ).toEqual(stateAfter);
+});
