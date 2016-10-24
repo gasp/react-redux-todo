@@ -1,9 +1,7 @@
 import React from 'react';
-// import store from '../store';
 
 let nextTodoId = 0;
 const TodoAdd = (props, { store }) => {
-  console.log('TodoAdd', props, store);
   let input;
   return (
     <div>
