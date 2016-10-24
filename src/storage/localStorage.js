@@ -1,5 +1,7 @@
 /* jshint esnext:true */
 
+
+
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem('myRadios');
@@ -8,11 +10,12 @@ export const loadState = () => {
   } catch (e) {
     return undefined;
   } finally {
-    console.log('state loaded');
+    // console.log('state loaded');
   }
 };
 
 export const saveState = (state) => {
+  console.log(localStorage);
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem('myRadios', serializedState);
@@ -21,8 +24,8 @@ export const saveState = (state) => {
   }
 };
 
-if (typeof require !== 'undefined') {
-  const localStorage = null;
+if (typeof process === 'object' && typeof window === 'undefined') {
+  let localStorage = localStorage || null;
 }
 
 export const setStorageEngine = (engine) => {

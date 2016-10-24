@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { todoAdd } from '../actions';
 
-const TodoAdd = connect()( ({ dispatch }) => {
+const TodoAdd =  ({ dispatch }) => {
   let input;
   return (
     <div>
@@ -17,7 +17,7 @@ const TodoAdd = connect()( ({ dispatch }) => {
       </button>
     </div>
   );
-});
+};
 
 
-export default TodoAdd;
+export default connect()(TodoAdd);

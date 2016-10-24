@@ -1,6 +1,8 @@
 import { createStore, combineReducers } from 'redux';
-import todos from './reducers/todos.js';
-import filter from './reducers/filter.js';
+import throttle from 'lodash/throttle';
+import todos from './reducers/todos';
+import filter from './reducers/filter';
+import { loadState, saveState } from './storage/localStorage';
 
 const todoApp = combineReducers({ todos, filter });
 const rootReducer = (state, action) => {
@@ -16,7 +18,17 @@ const presets =  { todos: [
   { id: 13, text: 'Learn Redux for real', completed: false },
   { id: 14, text: 'Learn React router', completed: false }
 ], filter:'' };
-const store = createStore(rootReducer, presets);
+
+const persistedState = loadState() || presets;
+
+const store = createStore(rootReducer, persistedState);
+
+// store state only once each 10 secs
+store.subscribe(throttle(() => {
+  saveState({
+    todos: store.getState().todos
+  });
+}, 1000));
 
 // FIXME: remove this hack
 window.store = store;
