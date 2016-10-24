@@ -1,6 +1,7 @@
-import store from './store';
+import configureStore from './configureStore';
 
 it('tests store', () => {
+  const store = configureStore();
   // reset and test clean state
   store.dispatch({type:'RESET'})
   expect(

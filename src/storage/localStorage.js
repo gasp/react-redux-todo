@@ -1,6 +1,12 @@
 /* jshint esnext:true */
 
+if (typeof process === 'object' && typeof window === 'undefined') {
+  let localStorage = localStorage || null;
+}
 
+export const setStorageEngine = (engine) => {
+  localStorage = engine;
+};
 
 export const loadState = () => {
   try {
@@ -22,12 +28,4 @@ export const saveState = (state) => {
   } catch(e) {
     console.error(e);
   }
-};
-
-if (typeof process === 'object' && typeof window === 'undefined') {
-  let localStorage = localStorage || null;
-}
-
-export const setStorageEngine = (engine) => {
-  localStorage = engine;
 };

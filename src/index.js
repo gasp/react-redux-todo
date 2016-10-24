@@ -1,14 +1,13 @@
 import React from 'react';
-import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
-import TodoApp from './components/TodoApp';
-import store from './store'
+import Root from './components/Root';
+import configureStore from './configureStore'
 
 import './index.css';
 
+const store = configureStore();
+
 ReactDOM.render(
-  <Provider store={store}>
-    <TodoApp />
-  </Provider>,
+  <Root store={store} />,
   document.getElementById('root')
 );
