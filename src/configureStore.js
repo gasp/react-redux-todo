@@ -1,7 +1,9 @@
-import { createStore } from 'redux';
+import { createStore, compose } from 'redux';
 import throttle from 'lodash/throttle';
 import { loadState, saveState } from './storage/localStorage';
 import todoApp from './reducers/index';
+
+const devtools = window.devToolsExtension || (() => (noop) => noop);
 
 const presets =  { todos: [
   { id: 11, text: 'Learn React', completed: true },
@@ -13,7 +15,7 @@ const presets =  { todos: [
 const configureStore = () => {
   const persistedState = loadState() || presets;
 
-  const store = createStore(todoApp, persistedState);
+  const store = createStore(todoApp, persistedState, compose(devtools()));
 
   // store state only once each 10 secs
   store.subscribe(throttle(() => {
